@@ -1,0 +1,66 @@
+﻿@page
+@model Jotte.Pages.Jottes.IndexModel
+
+@{
+    ViewData["Title"] = "Study Entries";
+}
+
+<h4>Study Entries</h4>
+<br />
+<br />
+<torm method=" get">
+    <input type="text" name="searchString" placeholder="Search Entries">
+    <button type="submit"> Search </button>
+</torm>
+<hr />
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Sjotte[0].Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sjotte[0].Scripture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sjotte[0].Note)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Sjotte) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Scripture)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Note)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a>  
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> 
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr />
+<p>
+    <a asp-page="Create">Add Study Entry</a>
+</p>
+<br />
+<br />
+<br />
+<br />
